@@ -1,8 +1,11 @@
 <mvc:View
+    controllerName="ui5.databinding.controller.App"
 	xmlns="sap.m"
+    xmlns:core="sap.ui.core"
 	xmlns:form="sap.ui.layout.form"
     xmlns:l="sap.ui.layout"
-	xmlns:mvc="sap.ui.core.mvc">
+	xmlns:mvc="sap.ui.core.mvc"
+    core:require="{Currency: 'sap/ui/model/type/Currency'}">
 	<Panel headerText="{i18n>panel1HeaderText}" class="sapUiResponsiveMargin" width="auto">
 		<form:SimpleForm editable="true" layout="ColumnLayout">
 			<Label text="{i18n>firstName}"/>
@@ -21,7 +24,27 @@
 					htmlText="{/address/street}&lt;br>{/address/zip} {/address/city}&lt;br>{/address/country}"
 					id="address" 
 					width="200px"/>
+                <Link href="{
+						parts: [
+							'/firstName',
+							'/lastName'
+						],
+						formatter: '.formatMail'
+					}"
+					text="{i18n>sendEmail}"/>
 			</l:VerticalLayout>
+            <l:VerticalLayout>
+                <Label labelFor="salesAmount" text="{i18n>salesAmount}:"/>
+                <Input description="{/currencyCode}" enabled="{/enabled}" id="salesAmount"
+                    value="{
+                        parts: [
+                            {path: '/salesAmount'},
+                            {path: '/currencyCode'}
+                        ],
+                        type: 'Currency',
+                        formatOptions: {showMeasure: false}
+                    }" width="200px"/>
+            </l:VerticalLayout>
 		</content>
 	</Panel>
 </mvc:View>

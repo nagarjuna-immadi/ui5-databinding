@@ -1,3 +1,5 @@
 {
-	"greetingText" : "Hi, my name is Harry Hawk"
+	"firstName" : "Harry",
+	"lastName" : "Hawk",
+	"enabled" : true
 }

@@ -1,1 +1,1 @@
-### App to Practice Data Binding in UI5
+# UI5 Data Binding Application
